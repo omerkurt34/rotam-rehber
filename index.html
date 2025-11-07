@@ -1,59 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rotam Rehber</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rotam — Turizm Rehberi</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>🌍 Rotam Rehber</h1>
-    <div class="header-right">
-      <select id="languageSelect">
-        <option value="tr">🇹🇷 Türkçe</option>
-        <option value="en">🇬🇧 English</option>
-        <option value="ar">🇸🇦 العربية</option>
+  <header class="topbar">
+    <div class="brand">🌍 Rotam</div>
+    <div class="top-actions">
+      <select id="langSelect" aria-label="Dil seçimi">
+        <option value="tr">Türkçe</option>
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
       </select>
-      <button id="logoutBtn" style="display:none;">Çıkış</button>
+
+      <div id="authBlock" class="auth-block">
+        <input id="emailInput" type="email" placeholder="E-posta" />
+        <input id="passInput" type="password" placeholder="Şifre" />
+        <button id="loginBtn">Giriş Yap</button>
+        <button id="logoutBtn" style="display:none">Çıkış</button>
+      </div>
     </div>
   </header>
 
-  <main>
-    <div id="authSection">
-      <h2>Admin Girişi</h2>
-      <input type="email" id="email" placeholder="E-posta" />
-      <input type="password" id="password" placeholder="Şifre" />
-      <button id="loginBtn">Giriş Yap</button>
-    </div>
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <h3>Kategoriler</h3>
+        <ul id="categoryList" class="cat-list"></ul>
+      </div>
+    </aside>
 
-    <div id="contentSection" style="display:none;">
-      <div class="toolbar">
-        <button id="addPlaceBtn">➕ Yeni Yer Ekle</button>
+    <section class="content">
+      <div class="hero">
+        <div id="slider" class="slider">
+          <!-- JS dolduracak -->
+        </div>
+        <div class="slider-controls">
+          <button id="prevSlide">‹</button>
+          <button id="nextSlide">›</button>
+        </div>
       </div>
 
-      <div id="categoryList"></div>
-    </div>
+      <div class="toolbar">
+        <div class="results" id="resultsCount"></div>
+        <button id="addBtn" class="add-btn" style="display:none">➕ Yer Ekle</button>
+      </div>
+
+      <div id="placesGrid" class="grid"></div>
+    </section>
   </main>
 
-  <!-- Modal -->
-  <div id="addPlaceModal" class="modal">
-    <div class="modal-content">
+  <!-- Add modal -->
+  <div id="modalBackdrop" class="modal-backdrop" style="display:none">
+    <div class="modal">
       <h3>Yeni Yer Ekle</h3>
-      <input type="text" id="placeName" placeholder="Yer Adı" />
-      <select id="categorySelect">
-        <option value="">Kategori Seç</option>
-      </select>
-      <select id="subCategorySelect">
-        <option value="">Alt Kategori Seç</option>
-      </select>
-      <input type="text" id="placeImage" placeholder="Görsel URL (isteğe bağlı)" />
-      <textarea id="placeDesc" placeholder="Açıklama"></textarea>
-      <button id="savePlaceBtn">Kaydet</button>
-      <button id="closeModal">Kapat</button>
+
+      <label>İsim</label>
+      <input id="placeName" type="text" placeholder="Örn: Villa Cello">
+
+      <label>Kategori</label>
+      <select id="placeCategory"></select>
+
+      <label>Alt Kategori</label>
+      <select id="placeSub"></select>
+
+      <label>Görsel URL</label>
+      <input id="placeImage" type="text" placeholder="https://...jpg (isteğe bağlı)">
+
+      <label>Açıklama</label>
+      <textarea id="placeDesc" rows="3" placeholder="Kısa bilgi"></textarea>
+
+      <div class="modal-actions">
+        <button id="savePlace">Kaydet</button>
+        <button id="cancelPlace">İptal</button>
+      </div>
     </div>
   </div>
 
-  <script src="script.js" type="module"></script>
+  <footer class="footer">© Rotam — Demo</footer>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>
