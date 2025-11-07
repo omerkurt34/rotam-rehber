@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rotam Rehber</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🌍 Rotam Rehber</h1>
+    <div class="header-right">
+      <select id="languageSelect">
+        <option value="tr">🇹🇷 Türkçe</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="ar">🇸🇦 العربية</option>
+      </select>
+      <button id="logoutBtn" style="display:none;">Çıkış</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="authSection">
+      <h2>Admin Girişi</h2>
+      <input type="email" id="email" placeholder="E-posta" />
+      <input type="password" id="password" placeholder="Şifre" />
+      <button id="loginBtn">Giriş Yap</button>
+    </div>
+
+    <div id="contentSection" style="display:none;">
+      <div class="toolbar">
+        <button id="addPlaceBtn">➕ Yeni Yer Ekle</button>
+      </div>
+
+      <div id="categoryList"></div>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div id="addPlaceModal" class="modal">
+    <div class="modal-content">
+      <h3>Yeni Yer Ekle</h3>
+      <input type="text" id="placeName" placeholder="Yer Adı" />
+      <select id="categorySelect">
+        <option value="">Kategori Seç</option>
+      </select>
+      <select id="subCategorySelect">
+        <option value="">Alt Kategori Seç</option>
+      </select>
+      <input type="text" id="placeImage" placeholder="Görsel URL (isteğe bağlı)" />
+      <textarea id="placeDesc" placeholder="Açıklama"></textarea>
+      <button id="savePlaceBtn">Kaydet</button>
+      <button id="closeModal">Kapat</button>
+    </div>
+  </div>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>
